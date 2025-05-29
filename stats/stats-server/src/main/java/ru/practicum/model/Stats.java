@@ -1,6 +1,8 @@
 package ru.practicum.model;
 
 
+import jakarta.persistence.*;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
