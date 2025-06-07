@@ -76,12 +76,6 @@
 							<artifactId>checkstyle</artifactId>
 							<version>10.3</version>
 						</dependency>
-						<dependency>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-							<version>1.18.32</version> <!-- актуальная версия на май 2025 -->
-							<scope>provided</scope>
-						</dependency>
 					</dependencies>
 				</plugin>
 				<plugin>
