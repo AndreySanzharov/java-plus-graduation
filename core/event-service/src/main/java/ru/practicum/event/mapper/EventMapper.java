@@ -9,7 +9,6 @@ import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {LocationMapper.class})
 public interface EventMapper {
-    //target - поле на выходе, source на входе
     @Mapping(target = "initiator", ignore = true)
     @Mapping(target = "confirmedRequests", ignore = true)
     EventShortDto toEventShortDto(Event event);
