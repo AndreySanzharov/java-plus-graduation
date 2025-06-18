@@ -10,30 +10,30 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = {LocationMapper.class})
 public interface EventMapper {
     //target - поле на выходе, source на входе
-    @Mapping(target = "initiator", ignore = true)
-    @Mapping(target = "confirmedRequests", ignore = true)
     EventShortDto toEventShortDto(Event event);
 
-    @Mapping(target = "initiator", ignore = true)
-    @Mapping(target = "confirmedRequests", ignore = true)
     EventFullDto toEventFullDto(Event event);
 
     @Mapping(target = "category.id", source = "category")
     @Mapping(target = "createdOn", expression = "java(java.time.LocalDateTime.now())")
-    @Mapping(target = "state", expression = "java(ru.practicum.event.dto.State.PENDING)")
+    @Mapping(target = "state", expression = "java(ru.practicum.event.model.State.PENDING)")
     @Mapping(target = "participantLimit", source = "participantLimit", defaultValue = "0")
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "initiator", ignore = true)
+    @Mapping(target = "confirmedRequests", ignore = true)
     @Mapping(target = "views", ignore = true)
     @Mapping(target = "publishedOn", ignore = true)
     Event toEntity(NewEventDto newEventDto);
 
     List<EventShortDto> toEventShortDto(List<Event> events);
 
+    List<EventFullDto> toEventFullDto(List<Event> events);
+
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)//игнорирование полей c null
     @Mapping(target = "category.id", source = "category")
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "initiator", ignore = true)
+    @Mapping(target = "confirmedRequests", ignore = true)
     @Mapping(target = "views", ignore = true)
     @Mapping(target = "publishedOn", ignore = true)
     @Mapping(target = "state", ignore = true)
@@ -44,6 +44,7 @@ public interface EventMapper {
     @Mapping(target = "category.id", source = "category")
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "initiator", ignore = true)
+    @Mapping(target = "confirmedRequests", ignore = true)
     @Mapping(target = "views", ignore = true)
     @Mapping(target = "publishedOn", ignore = true)
     @Mapping(target = "state", ignore = true)
