@@ -58,7 +58,7 @@ public class CollectorGrpcService extends UserActionControllerGrpc.UserActionCon
     private ActionTypeAvro mapProtoToAvro(ActionTypeProto proto) {
         return switch (proto) {
             case ACTION_LIKE -> ActionTypeAvro.LIKE;
-            case ACTION_VIEW ->  ActionTypeAvro.VIEW;
+            case ACTION_VIEW -> ActionTypeAvro.VIEW;
             case ACTION_REGISTER -> ActionTypeAvro.REGISTER;
             case UNRECOGNIZED -> null;
         };

@@ -3,7 +3,14 @@ package ru.practicum.request.client;
 import jakarta.validation.constraints.Positive;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import ru.practicum.request.dto.EventRequestStatusUpdateResult;
 import ru.practicum.request.dto.ParticipationRequestDto;
 import ru.practicum.request.dto.RequestStatusUpdateDto;
@@ -30,7 +37,7 @@ public interface RequestClient {
     @GetMapping("/{userId}/requests/{eventId}")
     @ResponseStatus(HttpStatus.OK)
     List<ParticipationRequestDto> getAllByEventId(@PathVariable(name = "userId") @Positive long userId,
-                                                         @PathVariable @Positive long eventId);
+                                                  @PathVariable @Positive long eventId);
 
     @PutMapping("/{userId}/requests/status")
     EventRequestStatusUpdateResult updateRequestStatus(@PathVariable(name = "userId") @Positive long userId,

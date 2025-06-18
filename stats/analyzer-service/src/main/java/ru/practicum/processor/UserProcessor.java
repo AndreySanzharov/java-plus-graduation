@@ -19,7 +19,7 @@ import java.util.Map;
 
 @Slf4j
 @Component
-public class UserProcessor implements  Runnable {
+public class UserProcessor implements Runnable {
 
     private static final Duration CONSUME_ATTEMPT_TIMEOUT = Duration.ofMillis(1000);
     private static final Map<TopicPartition, OffsetAndMetadata> currentOffsets = new HashMap<>();
@@ -30,7 +30,7 @@ public class UserProcessor implements  Runnable {
     @Value("${analyzer.topic.user.v1}")
     private String topic;
 
-    public UserProcessor(KafkaConsumer<Void, UserActionAvro> consumer,  UserService userService) {
+    public UserProcessor(KafkaConsumer<Void, UserActionAvro> consumer, UserService userService) {
         this.consumer = consumer;
         this.userService = userService;
 

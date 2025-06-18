@@ -1,7 +1,15 @@
 package ru.practicum.event.mapper;
 
-import org.mapstruct.*;
-import ru.practicum.event.dto.*;
+import org.mapstruct.BeanMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
+import ru.practicum.event.dto.EventFullDto;
+import ru.practicum.event.dto.EventShortDto;
+import ru.practicum.event.dto.NewEventDto;
+import ru.practicum.event.dto.UpdateEventAdminRequest;
+import ru.practicum.event.dto.UpdateEventUserRequest;
 import ru.practicum.event.model.Event;
 
 import java.util.List;
@@ -9,7 +17,6 @@ import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {LocationMapper.class})
 public interface EventMapper {
-    //target - поле на выходе, source на входе
     @Mapping(target = "initiator", ignore = true)
     @Mapping(target = "confirmedRequests", ignore = true)
     @Mapping(target = "rating", ignore = true)

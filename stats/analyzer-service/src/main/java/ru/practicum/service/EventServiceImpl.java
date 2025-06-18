@@ -23,7 +23,7 @@ public class EventServiceImpl implements EventService {
         EventAction existEvent = getById(eventSimilarityAvro.getEventA(), eventSimilarityAvro.getEventB());
         if (existEvent == null) {
             eventAction = eventRepository.save(EventMapper.map(eventSimilarityAvro));
-        }  else {
+        } else {
             existEvent.setTimestamp(eventSimilarityAvro.getTimestamp());
             existEvent.setScore(eventSimilarityAvro.getScore());
             eventAction = eventRepository.save(existEvent);

@@ -19,7 +19,7 @@ import java.util.Map;
 
 @Slf4j
 @Component
-public class EventProcessor{
+public class EventProcessor {
 
     private static final Duration CONSUME_ATTEMPT_TIMEOUT = Duration.ofMillis(1000);
     private static final Map<TopicPartition, OffsetAndMetadata> currentOffsets = new HashMap<>();
@@ -30,7 +30,7 @@ public class EventProcessor{
     @Value("${analyzer.topic.event.v1}")
     private String topic;
 
-    public EventProcessor(KafkaConsumer<Void, EventSimilarityAvro> consumer,  EventService eventService) {
+    public EventProcessor(KafkaConsumer<Void, EventSimilarityAvro> consumer, EventService eventService) {
         this.consumer = consumer;
         this.eventService = eventService;
 

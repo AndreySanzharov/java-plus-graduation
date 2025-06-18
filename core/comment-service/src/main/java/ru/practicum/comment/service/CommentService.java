@@ -24,4 +24,4 @@ public interface CommentService {
 
     List<CommentDto> getReplies(Long commentId);
 
-    }
+}
