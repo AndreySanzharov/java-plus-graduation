@@ -2,7 +2,14 @@ package ru.practicum.event.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import ru.practicum.event.dto.EventDtoGetParam;
 import ru.practicum.event.dto.EventFullDto;
 import ru.practicum.event.dto.EventShortDto;
@@ -24,7 +31,19 @@ public class PublicEventController {
 
     @GetMapping("/{id}")
     public EventFullDto getPublicEventById(@PathVariable Long id,
+                                           @RequestHeader(value = "X-EWM-USER-ID", required = false) Long userId,
                                            HttpServletRequest rqt) {
-        return eventService.getPublicEventById(id, rqt);
+        return eventService.getPublicEventById(id, userId, rqt);
+    }
+
+    @PutMapping("/{eventId}/like")
+    public void likeEvent(@RequestHeader("X-EWM-USER-ID") Long userId, @PathVariable Long eventId) {
+        eventService.likeEvent(userId, eventId);
+    }
+
+    @GetMapping("/recommendations")
+    public List<EventShortDto> findRecommendation(@RequestHeader(value = "X-EWM-USER-ID", required = false) Long userId,
+                                                  @RequestParam Integer maxResults) {
+        return eventService.findRecommendation(userId, maxResults);
     }
 }
